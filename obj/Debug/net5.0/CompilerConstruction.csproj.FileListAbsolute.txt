@@ -1,0 +1,16 @@
+C:\Users\computers way\Desktop\CompilerConstruction\bin\Debug\net5.0\CompilerConstruction.exe
+C:\Users\computers way\Desktop\CompilerConstruction\bin\Debug\net5.0\CompilerConstruction.deps.json
+C:\Users\computers way\Desktop\CompilerConstruction\bin\Debug\net5.0\CompilerConstruction.runtimeconfig.json
+C:\Users\computers way\Desktop\CompilerConstruction\bin\Debug\net5.0\CompilerConstruction.runtimeconfig.dev.json
+C:\Users\computers way\Desktop\CompilerConstruction\bin\Debug\net5.0\CompilerConstruction.dll
+C:\Users\computers way\Desktop\CompilerConstruction\bin\Debug\net5.0\ref\CompilerConstruction.dll
+C:\Users\computers way\Desktop\CompilerConstruction\bin\Debug\net5.0\CompilerConstruction.pdb
+C:\Users\computers way\Desktop\CompilerConstruction\obj\Debug\net5.0\CompilerConstruction.csprojAssemblyReference.cache
+C:\Users\computers way\Desktop\CompilerConstruction\obj\Debug\net5.0\CompilerConstruction.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\computers way\Desktop\CompilerConstruction\obj\Debug\net5.0\CompilerConstruction.AssemblyInfoInputs.cache
+C:\Users\computers way\Desktop\CompilerConstruction\obj\Debug\net5.0\CompilerConstruction.AssemblyInfo.cs
+C:\Users\computers way\Desktop\CompilerConstruction\obj\Debug\net5.0\CompilerConstruction.csproj.CoreCompileInputs.cache
+C:\Users\computers way\Desktop\CompilerConstruction\obj\Debug\net5.0\CompilerConstruction.dll
+C:\Users\computers way\Desktop\CompilerConstruction\obj\Debug\net5.0\ref\CompilerConstruction.dll
+C:\Users\computers way\Desktop\CompilerConstruction\obj\Debug\net5.0\CompilerConstruction.pdb
+C:\Users\computers way\Desktop\CompilerConstruction\obj\Debug\net5.0\CompilerConstruction.genruntimeconfig.cache
