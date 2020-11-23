@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1FWpGm6t3N0wO5FuO10eiygyzkr01f7HtLyglAgi8P5q9SUHNUWZUqULtzj3207bHKWJRZOr/xYlPC3yXx1SpA==",
+  "dgSpecHash": "l+dlSzHZO/b2plPyESK0xAjLG++w/1w2cEpiPdRc6RbzJK01tmrapzQ80/hFK4Alp7H0ldV9Z6rFFWt6yAB98g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\computers way\\Desktop\\CompilerConstruction\\CompilerConstruction.csproj",
+  "projectFilePath": "/home/fahama/Workstation/Projects/Compiler Project/Compiler/CompilerConstruction.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

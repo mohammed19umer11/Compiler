@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\computers way\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\computers way\\.nuget\\packages"
+      "/home/fahama/.dotnet/store/|arch|/|tfm|",
+      "/home/fahama/.nuget/packages"
     ]
   }
 }
