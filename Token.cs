@@ -10,10 +10,17 @@ namespace CompilerConstruction{
         {
             get;
         }
-
-        public Token (String Word,int Line){
+        public String Class
+        {
+            get;
+        }
+    public Token (){
+            
+        }
+        public Token (String Word,int Line,String Class){
             this.Word=Word;
             this.Line=Line;
+            this.Class=Class;
         }
     }
 }
