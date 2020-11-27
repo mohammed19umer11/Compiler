@@ -16,16 +16,21 @@ namespace CompilerConstruction
                 return false;
             }            
         }            
-    
+        static Boolean IsdataType (String word){
+            String [] datatype = new String [] {"int","string","String","float","double","bool","Boolean"};
+            if(Array.Exists(datatype, element => element == word)){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
 
         static void Main(string[] args)
         {
            // String code_a = "int a = 1_\n a+=2_\n if(a==2 || a<=2 && a>0){a++_}\n int [] array_";
             String code_b = "_abc int a=1\na==3  _dfd";
-            // Console.WriteLine("Hello World!");
-
-            // String [,] keywords = new String [,] {{"int","Data Type"},{"string","Data Type"},{"float","Data Type"},
-            // {"double","Data Type"},{"bool","Data Type"}}; 
+ 
             foreach(Token token in tokenize(code_b)){
                 Console.WriteLine("TOKEN => Line No : {0}   Word = {1}  Class = {2}",token.Line,token.Word,token.Class);
             }
@@ -291,7 +296,10 @@ namespace CompilerConstruction
                     if(!String.IsNullOrEmpty(temp)){
                         if(Isidentifier(temp)){
                             words.Add(new Token(temp,line,"Identifier"));   
-                            }
+                        }
+                        else if(IsdataType(temp)){
+                            words.Add(new Token(temp,line,"Data Type")); 
+                        }
                         else {
                             words.Add(new Token(temp,line,""));
                         }
