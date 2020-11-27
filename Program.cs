@@ -8,12 +8,8 @@ namespace CompilerConstruction
     {
         static Boolean Isidentifier (String word){
             string pattern = @"(_|@)([a-z+A-Z]+)";
-                //Console.WriteLine("identifier");
-
             Regex rg = new Regex(pattern);
             if(rg.IsMatch(word)==true){
-                Console.WriteLine("identifier");
-
                 return true;
             }
             else {
@@ -33,10 +29,6 @@ namespace CompilerConstruction
             foreach(Token token in tokenize(code_b)){
                 Console.WriteLine("TOKEN => Line No : {0}   Word = {1}  Class = {2}",token.Line,token.Word,token.Class);
             }
-
-           
-            
-
         }
 
         static ArrayList tokenize (String code)
@@ -53,9 +45,10 @@ namespace CompilerConstruction
             String [] operator_7 = new String [] {"!"};
             String [] punctuators = new String [] {"\"","'",".",",","(",")","{","}","[","]",
             "/","#"," "};
-            Boolean jump;
-            for(int index=0;index<code.Length-1;index+=(jump)?2:1){
-                jump=false;
+            Boolean jump=false;
+            Console.WriteLine(code.Length);
+            for(int index=0;index<code.Length;index+=(jump==true)?2:1){
+                
                 // "+ and -"
                 if(Array.Exists(operator_1, element => element == code[index].ToString())){
                     if(!String.IsNullOrEmpty(temp)){
@@ -65,31 +58,47 @@ namespace CompilerConstruction
                     if(!(index+1 == code.Length-1)){
                         if(Array.Exists(operator_3, element => element == code[index+1].ToString())){
                             temp+=code[index+1];
-                            
                             words.Add(new Token(temp,line,""));
                             temp="";
-                            jump=true;
+                            if(!(index+2==code.Length-1)){
+                                jump=true;
+                            }
+                            else{
+                                jump=false;
+                            }
                         }
                         else if(code[index+1].Equals("+")){
                             temp+=code[index+1];
                             words.Add(new Token(temp,line,""));
                             temp="";
-                            jump=true;
+                            if(!(index+2==code.Length-1)){
+                                jump=true;
+                            }
+                            else{
+                                jump=false;
+                            }
                         }
                         else if(code[index+1].Equals("-")){
                             temp+=code[index+1];
                             words.Add(new Token(temp,line,""));
                             temp="";
-                            jump=true;
+                            if(!(index+2==code.Length-1)){
+                                jump=true;
+                            }
+                            else{
+                                jump=false;
+                            }
                         }
                         else{
                             words.Add(new Token(temp,line,""));
                             temp="";
+                            jump=false;
                         }
                     }
                     else{
                         words.Add(new Token(temp,line,""));
                         temp="";
+                        jump=false;
                     } 
                     }
                 }
@@ -104,28 +113,45 @@ namespace CompilerConstruction
                             temp+=code[index+1];
                             words.Add(new Token(temp,line,""));
                             temp="";
-                            jump=true;
+                            if(!(index+2==code.Length-1)){
+                                jump=true;
+                            }
+                            else{
+                                jump=false;
+                            }
                         }
                         else if(code[index+1].Equals("/")){
                             temp+=code[index+1];
                             words.Add(new Token(temp,line,""));
                             temp="";
-                            jump=true;
+                            if(!(index+2==code.Length-1)){
+                                jump=true;
+                            }
+                            else{
+                                jump=false;
+                            }
                         }
                         else if(code[index+1].Equals("*")){
                             temp+=code[index+1];
                             words.Add(new Token(temp,line,""));
                             temp="";
-                            jump=true;
+                            if(!(index+2==code.Length-1)){
+                                jump=true;
+                            }
+                            else{
+                                jump=false;
+                            }
                         }
                         else{
                             words.Add(new Token(temp,line,""));
                             temp="";
+                            jump=false;
                         }
                     }
                     else{
                         words.Add(new Token(temp,line,""));
                         temp="";
+                        jump=false;
                     }
                 }
                 }
@@ -140,17 +166,24 @@ namespace CompilerConstruction
                             temp+=code[index+1];
                             words.Add(new Token(temp,line,""));
                             temp="";
-                            jump=true;
+                            if(!(index+2==code.Length-1)){
+                                jump=true;
+                            }
+                            else{
+                                jump=false;
+                            }
                         }
                         else{
                             words.Add(new Token(temp,line,""));
                             temp="";
+                            jump=false;
                         }
                     } 
                     else{
                         temp+=code[index];
                         words.Add(new Token(temp,line,""));
                         temp="";
+                        jump=false;
                     }
                 }
                 }
@@ -165,16 +198,23 @@ namespace CompilerConstruction
                             temp+=code[index+1];
                             words.Add(new Token(temp,line,""));
                             temp="";
-                            jump=true;
+                            if(!(index+2==code.Length-1)){
+                                jump=true;
+                            }
+                            else{
+                                jump=false;
+                            }
                         }
                         else {
                             words.Add(new Token(temp,line,""));
                             temp="";
+                            jump=false;
                         }
                     }
                     else{
                         words.Add(new Token(temp,line,""));
                         temp="";
+                        jump=false;
                     }
                 }
                 }
@@ -189,18 +229,25 @@ namespace CompilerConstruction
                             temp+=code[index+1];
                             words.Add(new Token(temp,line,""));
                             temp="";
-                            jump=true;
+                            if(!(index+2==code.Length-1)){
+                                jump=true;
+                            }
+                            else{
+                                jump=false;
+                            }
                         }
                         else{
                         // Return Error with line No
                             words.Add(new Token(temp,line,""));
                             temp=""; 
+                            jump=false;
                         }
                     }
                     else{
                         // Return Error with line No
                         words.Add(new Token(temp,line,""));
                         temp="";
+                        jump=false;
                     }
                 }
                 }
@@ -215,18 +262,25 @@ namespace CompilerConstruction
                             temp+=code[index+1];
                             words.Add(new Token(temp,line,""));
                             temp="";
-                            jump=true;
+                            if(!(index+2==code.Length-1)){
+                                jump=true;
+                            }
+                            else{
+                                jump=false;
+                            }
                         }
                         else{
                         // Return Error with line No 
                             words.Add(new Token(temp,line,""));
                             temp="";
+                            jump=false;
                         }
                     }
                     else{
                         // Return Error with line No 
                         words.Add(new Token(temp,line,""));
                         temp="";
+                        jump=false;
                     }
                 }
                 }
@@ -236,10 +290,10 @@ namespace CompilerConstruction
                 else if(Array.Exists(punctuators, element => element == code[index].ToString())){
                     if(!String.IsNullOrEmpty(temp)){
                         if(Isidentifier(temp)){
-                               words.Add(new Token(temp,line,"Identifier"));   
+                            words.Add(new Token(temp,line,"Identifier"));   
                             }
-                            else {
-                                words.Add(new Token(temp,line,""));
+                        else {
+                            words.Add(new Token(temp,line,""));
                         }
                         temp="";
                         if(!(code[index].ToString()==(" "))){
@@ -247,9 +301,8 @@ namespace CompilerConstruction
                             words.Add(new Token(temp,line,""));
                             temp="";
                         }
-                    }
-                    
-                    
+                    }  
+                    jump=false;
                 }
                 else if(code[index].ToString()==(";")){
                    if(!String.IsNullOrEmpty(temp)){
@@ -259,7 +312,7 @@ namespace CompilerConstruction
                         words.Add(new Token(temp,line,""));
                         temp="";
                     } 
-                   
+                   jump=false;
                 }
                 else if(code[index].ToString()==("\n")){
                     if(!String.IsNullOrEmpty(temp)){
@@ -267,9 +320,25 @@ namespace CompilerConstruction
                         temp="";
                     }
                     line++;
+                    jump=false;
+                }
+                else if(index==code.Length-1){
+                    if(!String.IsNullOrEmpty(temp)){
+                        if(Isidentifier(temp)){
+                            temp+=code[index];
+                            words.Add(new Token(temp,line,"Identifier"));   
+                            }
+                        else {
+                            temp+=code[index];
+                            words.Add(new Token(temp,line,""));
+                        }
+                        temp="";
+                    }  
+                    jump=false;
                 }
                 else {
                     temp+=code[index];
+                    jump=false;
                 }
             }
             return words;
