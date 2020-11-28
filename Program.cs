@@ -7,7 +7,7 @@ namespace CompilerConstruction
     class Program
     {
         static Boolean Isidentifier (String word){
-            string pattern = @"(_|@)([a-z+A-Z]+)";
+            string pattern = @"(_|@)?([a-zA-z][a-zA-Z]*[_]*)";
             Regex rg = new Regex(pattern);
             if(rg.IsMatch(word)==true){
                 return true;
@@ -28,9 +28,12 @@ namespace CompilerConstruction
 
         static void Main(string[] args)
         {
-           // String code_a = "int a = 1_\n a+=2_\n if(a==2 || a<=2 && a>0){a++_}\n int [] array_";
+           String code_a = "int a = 1;\n a+=2;\n if(a==2 || a<=2 && a>0){a++;}\n int [] array;";
             String code_b = "_abc int a=1\na==3  _dfd";
  
+            foreach(Token token in tokenize(code_a)){
+                Console.WriteLine("TOKEN => Line No : {0}   Word = {1}  Class = {2}",token.Line,token.Word,token.Class);
+            }
             foreach(Token token in tokenize(code_b)){
                 Console.WriteLine("TOKEN => Line No : {0}   Word = {1}  Class = {2}",token.Line,token.Word,token.Class);
             }
@@ -224,13 +227,13 @@ namespace CompilerConstruction
                 }
                 }
                 // |
-                else if(Array.Exists(operator_5, element => element == code[index].ToString())){
+                else if(Array.Exists(operator_5, element => element.Equals(code[index].ToString()))){
                     if(!String.IsNullOrEmpty(temp)){
                         words.Add(new Token(temp,line,""));
                         temp="";
                         temp+=code[index];
                     if(!(index+1 == code.Length-1)){
-                        if(Array.Exists(operator_5, element => element == code[index+1].ToString())){
+                        if(Array.Exists(operator_5, element => element.Equals(code[index+1].ToString()))){
                             temp+=code[index+1];
                             words.Add(new Token(temp,line,""));
                             temp="";
