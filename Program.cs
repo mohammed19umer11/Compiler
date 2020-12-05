@@ -59,7 +59,7 @@ namespace CompilerConstruction
         static void Main(string[] args)
         {
            String code_a = "int a = 1;\n a+=2;\n if(a==2 || a<=2 && a>0){a++;}\n int [] array; ##umer sadsadsadas##"+
-           "\nString @name = umer;";
+           "\nString @name = umer;\n int b = a + 2;";
             String code_b = "_abc int a=1\na==3  _dfd";
  
             foreach(Token token in tokenize(code_a)){
@@ -94,53 +94,8 @@ namespace CompilerConstruction
                 if(Array.Exists(operator_1, element => element == code[index].ToString())){
                     comment=false;
                     ClassIdentify(temp,words,line);
+                    jump=WordBreakers.addsubOperator(code,words,index,line);
                     temp="";
-                    temp+=code[index];
-                    if(!(index+1 == code.Length-1)){
-                        if(Array.Exists(operator_3, element => element == code[index+1].ToString())){
-                            temp+=code[index+1];
-                            ClassIdentify(temp,words,line);
-                            temp="";
-                            if(!(index+2==code.Length-1)){
-                                jump=true;
-                            }
-                            else{
-                                jump=false;
-                            }
-                        }
-                        else if(code[index+1].Equals("+")){
-                            temp+=code[index+1];
-                            ClassIdentify(temp,words,line);
-                            temp="";
-                            if(!(index+2==code.Length-1)){
-                                jump=true;
-                            }
-                            else{
-                                jump=false;
-                            }
-                        }
-                        else if(code[index+1].Equals("-")){
-                            temp+=code[index+1];
-                            ClassIdentify(temp,words,line);
-                            temp="";
-                            if(!(index+2==code.Length-1)){
-                                jump=true;
-                            }
-                            else{
-                                jump=false;
-                            }
-                        }
-                        else{
-                            ClassIdentify(temp,words,line);
-                            temp="";
-                            jump=false;
-                        }
-                    }
-                    else{
-                        ClassIdentify(temp,words,line);
-                        temp="";
-                        jump=false;
-                    } 
                 }
                 // "/ and *"
                 else if(Array.Exists(operator_2, element => element == code[index].ToString())){
