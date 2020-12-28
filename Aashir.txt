@@ -1,0 +1,131 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
+namespace LexicalAnalyze
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[,] token = new string[100, 2];
+            ArrayList al = new ArrayList();
+            string temp = "";
+            //Console.WriteLine(temp);
+            Boolean multiLineComment = false;
+            int no = 0;
+            //string text = File.ReadAllText(@"C:\Users\BINARY COMPUTERS\source\repos\WordBreakerCC\WordBreakerCC\code.txt");
+            string[] text = File.ReadAllLines(@"./code.txt");
+            for (int i = 0; i < text.Length; i++)
+            {
+                int count =0;
+                string str = text[i];
+                Console.WriteLine($"line= {str}");
+                Console.WriteLine(str.Length);
+                //Console.WriteLine($"after Line comment = {multiLineComment}");
+                for (int j = 0; j < str.Length; j++)
+                {
+
+                    //FOR SINGLE COMMENT
+                    /*else if (str[j].Equals('#'))
+                    {
+                        Console.WriteLine("single comment");
+                        do
+                        {
+                            j++;
+                        } while (j != str.Length);
+                    }*/
+
+                    //FOR STRING
+                    if (str[j] == '\"')
+                    {
+                        Console.WriteLine("String start");
+                        j++;
+                        do
+                        {
+                            //Console.Write($"{i},{text[i]} ");
+                            temp += str[j];
+                            j++;
+                            if (j == str.Length)
+                            {
+                                temp = '\"' + temp;
+                                break;
+                            }
+                        } while (str[j] != '\"');
+                        Console.WriteLine($"temp={temp}");
+                        token[no, 0] = temp;
+                        token[no, 1] = i.ToString();
+                        no++;
+                        temp = "";
+                        Console.WriteLine("String End");
+                    }
+
+                    //FOR MULTI LINE COMMENT
+                    if (str[j].Equals('#') && str[j + 1].Equals('#') || multiLineComment==true)
+                    {
+                        count++;
+                        Console.WriteLine("Multiline Commentt Block");
+                        if (multiLineComment==true)
+                        {
+                            Console.WriteLine("if Block");
+                            while(!(str[j].Equals('#')) && !(str[j + 1].Equals('#')))
+                            {
+                                j++;
+                                // multiLineComment = false;
+                                // Console.WriteLine($"if j= {j} {str[j]}");
+                                //break;
+
+                            }
+                            j++;
+                            multiLineComment=false;
+                            Console.WriteLine("Multiline comment ended");
+                        }
+                        else
+                        {
+                            Console.WriteLine("else Block");
+                            Console.WriteLine($"{j} = {str[j]}     {j+1} = {str[j+1]}");
+                            j++;
+                            do
+                            {
+                                Console.WriteLine($"{j} = {str[j]}     {j+1} = {str[j+1]}");
+                                //multiLineComment = false;
+                                Console.WriteLine($"Index = {j}");
+                                if (j >= str.Length - 1)
+                                {
+                                    Console.WriteLine("Break");
+                                    // multiLineComment = true;
+                                    break;
+                                }
+                                j++;
+                                Console.WriteLine($"Index + 1 = {j+1}");
+                            } while (str[j] != '#' && str[j + 1] != '#' && j != str.Length - 1);
+                            j++;
+                            Console.WriteLine("Outside while block");
+                            if (str[j] == '#' && str[j + 1] == '#')
+                            {
+                                Console.WriteLine("else child if block");
+                                j++;
+                                multiLineComment = false;
+                            }
+                            Console.WriteLine($"Multiline Comment : {multiLineComment}");
+                            //j++;
+                        }
+                        Console.WriteLine($"Count : {count}");
+
+                    }
+
+                }
+            }
+
+        }
+    }
+}
+
+
+//string charPattern = @"^[*(\[)\]-]$"; \\ == \,  "" == ", \\b == \b
+
+
